@@ -6,7 +6,7 @@ export const Wrap = styled.div`
     display: flex;
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid rgb(27, 127, 204);
+    //border: 1px solid rgb(27, 127, 204);
 `;
 export const MenuItem = styled.div`
     flex: 1;

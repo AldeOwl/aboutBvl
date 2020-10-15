@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Wrap, Title } from './styled';
 import AboutMenu from '../../components/AboutMenu';
-import GetData from '../../service'
 import {getAbout} from "../../service/network";
 import Personal from "../../components/Personal";
 import Reviews from "../../components/Reviews";
@@ -10,15 +9,9 @@ import Documents from "../../components/Documents";
 import CityHotel from "../../components/CityHotel";
 
 class AboutPage extends Component {
-    getData = new GetData();
     state = {
-        personal: [],
-        reviews: [],
-        president: {},
-        format: {},
-        cityHotel: {},
         load: true,
-        activeTab: 'president',
+        activeTab: 'Миссия и ценности',
     };
     componentDidMount() {
     //     getAbout()

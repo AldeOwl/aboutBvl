@@ -1,38 +1,5 @@
 import styled from 'styled-components';
 
-export const Menu = styled.nav`
-  width: 100%;
-  margin: 0 auto;
-`;
-
-export const SocialLinks = styled.div`
-  width: 100%;
-  display: none;
-  order: 2;
-  border: none;
-  @media screen and (max-width: 680px) {
-    max-height: ${props => (props.active ? '40px' : '0')};
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: ${props => (props.active ? '10px' : '0')};
-    transition: all 0.3s ease-out 0.2s;
-  }
-`;
-
-export const MobileMenu = styled.div`
-  order: 2;
-  display: none;
-  width: 40px;
-  height: 40px;
-  position: relative;
-  top: 12px;
-  cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  @media screen and (max-width: 680px) {
-    display: block;
-  }
-`;
-
 
 export const Icon = styled.a`
   max-width: 30px;
