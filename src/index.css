@@ -3,18 +3,17 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Bebas';
+  font-family: 'Bebas', sans-serif;
   margin: 0;
 }
 
 @font-face {
   font-family: Bebas;
-  src: url(./fonts/BebasNeue\ Bold.ttf),
-      url(./fonts/BebasNeue\ Bold.otf);
+  src: url(./fonts/BebasNeueBold.woff2)format('woff2');
   font-weight: bold;
 }
 @font-face {
   font-family: Opensans;
-  src: url(./fonts/OpenSans-Regular.ttf);
+  src: url(./fonts/open-sans-cyrillic-regular.woff2)format('woff2');
   font-weight: normal;
 }
