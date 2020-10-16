@@ -5,7 +5,7 @@ import {
   List,
   Document,
 } from './styled';
-import Loader from "../Spinner/loader";
+import Index from "../Loader";
 import pdfFile from '../../images/pdfFile.svg';
 
 class Documents extends Component {
@@ -43,7 +43,7 @@ class Documents extends Component {
     if (loading) {
       return (
         <Wrap>
-          <Loader />;
+          <Index />;
         </Wrap>
       )
     }

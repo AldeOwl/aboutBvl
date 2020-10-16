@@ -9,7 +9,7 @@ const baseUrl = 'https://myvolley.ru/api';
 
 
 async function getData(url) {
-  const res = await fetch(`${baseUrl}${url}${checkUrl()}`);
+  const res = await fetch(`${baseUrl}${url}`);
   if (!res.ok) {
     throw new Error(`Could not fetch ${url} ${res.status}`)
   }
@@ -17,7 +17,7 @@ async function getData(url) {
 }
 
 export async function getAbout() {
-    return getData(`/tournament?request=about&id=`);
+    return getData(`/org?id=1&request=about`);
 }
 
 export async function getDocuments() {

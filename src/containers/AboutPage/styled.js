@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Wrap = styled.div`
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 `;
 export const Title = styled.h2`
