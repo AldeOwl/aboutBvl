@@ -21,5 +21,5 @@ export async function getAbout() {
 }
 
 export async function getDocuments() {
-  return getData(`/tournament?request=docs&id=`);
+  return getData(`/org?id=1&request=docs`);
 }

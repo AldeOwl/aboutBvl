@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Wrap, Title} from './styled';
 import AboutMenu from '../../components/AboutMenu';
-import {getAbout} from "../../service/network";
+import {getAbout, getDocuments} from "../../service/network";
 import Personal from "../../components/Personal";
 import Reviews from "../../components/Reviews";
 import Mission from "../../components/Mission";
@@ -18,6 +18,7 @@ class AboutPage extends Component {
   };
 
   componentDidMount() {
+    getDocuments();
     getAbout()
         .then(res => {
           this.setState({
@@ -28,11 +29,15 @@ class AboutPage extends Component {
         })
   };
 
-  onPersonalLoad = (personal) => {
-    this.setState({
-      personal,
-      load: false
-    });
+  documentsHandler = () => {
+    getDocuments()
+        .then(res => {
+          this.setState({
+            mission: res.filter(item => item.aboutType === 5)[0],
+            contacts: res.filter(item => item.aboutType === 6)[0],
+            load: false,
+          });
+        })
   };
 
   updateInfo() {
@@ -58,7 +63,7 @@ class AboutPage extends Component {
       personal,
       reviews,
       mission,
-      cityHotel,
+      contacts,
     } = this.state;
 
     return (
@@ -69,6 +74,7 @@ class AboutPage extends Component {
               :
               <>
                 {activeTab === 'Миссия и ценности' && <Mission mission={mission}/>}
+                {activeTab === 'Контакты' && <Mission mission={contacts}/>}
                 {/*{activeTab === 'documents' && <Documents/>}*/}
                 {/*{activeTab === 'city' && <CityHotel content={cityHotel}/>}*/}
                 {/*{activeTab === 'personal' && <Personal personal={personal} />}*/}
