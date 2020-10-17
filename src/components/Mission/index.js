@@ -9,7 +9,7 @@ function setText(val) {
 }
 
 const Mission = ({mission}) => {
-  if (!mission.text) return false;
+  if (!mission || !mission.text) return false;
   return (
       <NewsWrap>
         <NewsDetail dangerouslySetInnerHTML={setText(mission.text)}/>
