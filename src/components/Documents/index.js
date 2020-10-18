@@ -5,24 +5,12 @@ import {
   List,
   Document,
 } from './styled';
-import Index from "../Loader";
+import Loader from "../Loader";
 import pdfFile from '../../images/pdfFile.svg';
 
 class Documents extends Component {
-  state = {
-    documents: [],
-    loading: true,
-  }
-
   componentDidMount() {
-    getDocuments()
-      .then(res => this.setState({ documents: res.sort(this.sortByDate), loading: false }));
-  }
-
-  sortByDate = (a, b) => {
-    const dateX = a.date ? Date.parse(a.date) : 0;
-    const dateY = b.date ? Date.parse(b.date) : 0;
-    return dateY - dateX;
+    this.props.getDocuments()
   }
 
   getLink = (item) => {
@@ -35,15 +23,15 @@ class Documents extends Component {
 
   render() {
     const {
-      loading,
+      documentLoad,
       documents,
-    } = this.state;
+    } = this.props;
 
 
-    if (loading) {
+    if (documentLoad) {
       return (
         <Wrap>
-          <Index />;
+          <Loader />;
         </Wrap>
       )
     }

@@ -12,13 +12,15 @@ import Loader from '../../components/Loader';
 class AboutPage extends Component {
   state = {
     load: true,
+    documentLoad: true,
     activeTab: 'Миссия и ценности',
     mission: '',
     contacts: '',
+    juridical: '',
+    publicDoc: '',
   };
 
   componentDidMount() {
-    getDocuments();
     getAbout()
         .then(res => {
           this.setState({
@@ -32,10 +34,11 @@ class AboutPage extends Component {
   documentsHandler = () => {
     getDocuments()
         .then(res => {
+          console.log(res.filter(item => item.type === 9))
           this.setState({
-            mission: res.filter(item => item.aboutType === 5)[0],
-            contacts: res.filter(item => item.aboutType === 6)[0],
-            load: false,
+            juridical: res.filter(item => item.type === 9),
+            publicDoc: res.filter(item => item.type === 15),
+            documentLoad: false,
           });
         })
   };
@@ -59,9 +62,10 @@ class AboutPage extends Component {
   render() {
     const {
       load,
+      documentLoad,
       activeTab,
-      personal,
-      reviews,
+      juridical,
+      publicDoc,
       mission,
       contacts,
     } = this.state;
@@ -75,7 +79,21 @@ class AboutPage extends Component {
               <>
                 {activeTab === 'Миссия и ценности' && <Mission mission={mission}/>}
                 {activeTab === 'Контакты' && <Mission mission={contacts}/>}
-                {/*{activeTab === 'documents' && <Documents/>}*/}
+                {
+                  activeTab === 'Юридические документы' &&
+                    <Documents
+                        documentLoad={documentLoad}
+                        getDocuments={this.documentsHandler}
+                        documents={juridical}
+                    />
+                }
+                {activeTab === 'Публичные отчеты' &&
+                  <Documents
+                      documentLoad={documentLoad}
+                      getDocuments={this.documentsHandler}
+                      documents={publicDoc}
+                  />
+                }
                 {/*{activeTab === 'city' && <CityHotel content={cityHotel}/>}*/}
                 {/*{activeTab === 'personal' && <Personal personal={personal} />}*/}
                 {/*{activeTab === 'reviews' && <Reviews reviews={reviews} />}*/}

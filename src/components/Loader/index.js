@@ -1,7 +1,7 @@
 import React from 'react';
 import './loader.css';
 
-const Index = () => {
+const Loader = () => {
     return (
         <div className="lds-css ng-scope">
             <div className="lds-double-ring">
@@ -12,4 +12,4 @@ const Index = () => {
     );
 };
 
-export default Index;
+export default Loader;
