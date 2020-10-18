@@ -23,7 +23,7 @@ class Gallery extends Component {
   }
 
   handleScroll = () => {
-    if (document.documentElement.clientHeight + 100 + document.getElementById('footer').clientHeight + window.pageYOffset > document.documentElement.scrollHeight) {
+    if (document.documentElement.clientHeight + 100 + window.pageYOffset > document.documentElement.scrollHeight) {
       //долистали до конца страницы
       this.setState((prevState) => ({count: prevState.count + 15}));
     }
