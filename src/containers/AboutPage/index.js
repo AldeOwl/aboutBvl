@@ -1,23 +1,26 @@
 import React, {Component} from 'react';
 import {Wrap, Title} from './styled';
 import AboutMenu from '../../components/AboutMenu';
-import {getAbout, getDocuments} from "../../service/network";
+import {getAbout, getDocuments, getConfession} from "../../service/network";
 import Personal from "../../components/Personal";
 import Reviews from "../../components/Reviews";
 import Mission from "../../components/Mission";
 import Documents from "../../components/Documents";
-import CityHotel from "../../components/CityHotel";
+import Gallery from "../../components/Gallery";
 import Loader from '../../components/Loader';
 
 class AboutPage extends Component {
   state = {
     load: true,
     documentLoad: true,
-    activeTab: 'Миссия и ценности',
+    confessionLoad: true,
+    activeTab: 'О нас',
     mission: '',
     contacts: '',
     juridical: '',
     publicDoc: '',
+    confession: [],
+
   };
 
   componentDidMount() {
@@ -34,11 +37,20 @@ class AboutPage extends Component {
   documentsHandler = () => {
     getDocuments()
         .then(res => {
-          console.log(res.filter(item => item.type === 9))
           this.setState({
             juridical: res.filter(item => item.type === 9),
             publicDoc: res.filter(item => item.type === 15),
             documentLoad: false,
+          });
+        })
+  };
+
+  confessionHandler = () => {
+    getConfession()
+        .then(res => {
+          this.setState({
+            confession: res,
+            confessionLoad: false,
           });
         })
   };
@@ -63,11 +75,13 @@ class AboutPage extends Component {
     const {
       load,
       documentLoad,
+      confessionLoad,
       activeTab,
       juridical,
       publicDoc,
       mission,
       contacts,
+      confession,
     } = this.state;
 
     return (
@@ -77,7 +91,7 @@ class AboutPage extends Component {
               <Loader/>
               :
               <>
-                {activeTab === 'Миссия и ценности' && <Mission mission={mission}/>}
+                {activeTab === 'О нас' && <Mission mission={mission}/>}
                 {activeTab === 'Контакты' && <Mission mission={contacts}/>}
                 {
                   activeTab === 'Юридические документы' &&
@@ -86,6 +100,13 @@ class AboutPage extends Component {
                         getDocuments={this.documentsHandler}
                         documents={juridical}
                     />
+                }
+                {activeTab === 'Признание' &&
+                  <Gallery
+                      images={confession}
+                      getConfession={this.confessionHandler}
+                      confessionLoad={confessionLoad}
+                  />
                 }
                 {activeTab === 'Публичные отчеты' &&
                   <Documents

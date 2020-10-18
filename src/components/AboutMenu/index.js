@@ -2,7 +2,7 @@ import React from 'react';
 import { MenuItem, Wrap } from './styled';
 
 const titles = [
-    'Миссия и ценности',
+    'О нас',
     'Наша команда',
     'Юридические документы',
     'Признание',

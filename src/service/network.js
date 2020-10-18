@@ -23,3 +23,7 @@ export async function getAbout() {
 export async function getDocuments() {
   return getData(`/org?id=1&request=docs`);
 }
+
+export async function getConfession() {
+  return getData(`/org?id=1&request=gallery`);
+}
