@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {Wrap, Title} from './styled';
 import AboutMenu from '../../components/AboutMenu';
 import {getAbout, getDocuments, getConfession} from "../../service/network";
-import Personal from "../../components/Personal";
-import Reviews from "../../components/Reviews";
 import Mission from "../../components/Mission";
 import Documents from "../../components/Documents";
 import Gallery from "../../components/Gallery";
